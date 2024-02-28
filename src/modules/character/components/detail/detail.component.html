@@ -1,0 +1,63 @@
+<div class="container">
+  <mat-card class="example-card">
+    <img
+      mat-card-image
+      [src]="character?.image || ''"
+      [alt]="character?.name || ''"
+    />
+    <mat-card-content class="card-content">
+      <p class="content-name">
+        <span class="content-span">{{ character?.name }}</span>
+      </p>
+      <p>
+        <span class="content-span">Status: </span>
+        <span
+          style="font-weight: bolder"
+          [ngStyle]="{
+            color:
+              character?.status === 'Alive'
+                ? 'green'
+                : character?.status === 'Dead'
+                ? 'red'
+                : 'gray'
+          }"
+        >
+          {{ character?.status }}
+        </span>
+      </p>
+      <p><span class="content-span">Species: </span>{{ character?.species }}</p>
+      <p>
+        <span class="content-span">Gender: </span>
+        <span
+          style="font-weight: bolder"
+          [ngStyle]="{
+            color:
+              character?.gender === 'Male'
+                ? 'yellowgreen'
+                : character?.gender === 'Female'
+                ? 'purple'
+                : character?.gender === 'Genderless'
+                ? 'gray'
+                : 'red'
+          }"
+          >{{ character?.gender }}</span
+        >
+      </p>
+      <p>
+        <span class="content-span">Origin: </span>{{ character?.origin?.name }}
+      </p>
+      <p>
+        <span class="content-span">Location: </span
+        >{{ character?.location?.name }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+  <div class="container-body">
+    <div class="body-header">Episodes:</div>
+    <div class="body-main">
+      <div *ngFor="let epis of character?.episode">
+        <app-episode [episodeId]="episodeIdSelection(epis)"></app-episode>
+      </div>
+    </div>
+  </div>
+</div>

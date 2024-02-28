@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  .menu {
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba($color: gray, $alpha: 0.6);
+    width: 20%;
+    height: 100%;
+    .menu-footer{
+        position: absolute;
+        bottom: 0;        
+        text-align: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .sidebar {
+      padding-left: 1rem;
+      padding-top: 1rem;
+      border-right: gray;
+      ul {
+        justify-content: flex-start;
+        margin-top: 1rem;
+        list-style: none;
+        li {
+          text-decoration: none;
+          a {
+            overflow: none;
+            display: inline-block;
+            text-wrap: nowrap;
+            color: black;
+          }
+        }
+        .menu-active {
+          border-left: 2px solid aqua;
+        }
+      }
+      button {
+        align-items: center;
+        justify-content: center;
+      }
+    }
+}
+.router-container {
+  width: 88%;
+  padding: 0 2rem;
+  overflow: scroll;
+  overflow-x: auto;
+}
+}

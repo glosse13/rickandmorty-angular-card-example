@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="menu">
+    <div class="sidebar" mode="side" opened>
+      <div>Rick and Morty API</div>
+      <ul>
+        <li
+          routerLinkActive="menu-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a [routerLink]="['/']">
+            <button
+              mat-flat-button
+              aria-label="Example icon button with a vertical three dot icon"
+              extended
+            >
+              <mat-icon>home</mat-icon> Ana sayfa
+            </button>
+          </a>
+        </li>
+        <li
+          routerLinkActive="menu-active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a [routerLink]="['/characters']"
+            ><button
+              mat-flat-button
+              aria-label="Example icon button with a vertical three dot icon"
+              extended
+            >
+              <mat-icon>people</mat-icon> Characters
+            </button></a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="menu-footer">
+      Rick and Morty &copy; Furkan ÇINAR
+    </div>
+  </div>
+  <div class="router-container">
+    <router-outlet />
+  </div>
+</div>

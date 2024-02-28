@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="filter">
+    <span class="filter-info">Filter Characters</span>
+    <div class="filter-input">
+      <mat-form-field class="example-full-width">
+        <input
+          placeholder="Name"
+          name="name"
+          matInput
+          [(ngModel)]="searchFilter.name"
+        />
+      </mat-form-field>
+    </div>
+    <div class="filter-input">
+      <mat-form-field class="example-full-width">
+        <input
+          placeholder="Type"
+          matInput
+          [(ngModel)]="searchFilter.type"
+        />
+      </mat-form-field>
+    </div>
+    <div class="filter-select">
+      <mat-form-field>
+        <mat-select
+          placeholder="Status"
+          [(ngModel)]="searchFilter.status"
+          [(value)]="searchFilter.status"
+        >
+          <mat-option value="alive">Alive</mat-option>
+          <mat-option value="dead">Dead</mat-option>
+          <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="filter-select">
+      <mat-form-field>
+        <mat-select
+          placeholder="Gender"
+          [(ngModel)]="searchFilter.gender"
+          [(value)]="searchFilter.gender"
+        >
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="genderless">Genderless</mat-option>
+          <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <div class="search-button">
+        <button
+          mat-raised-button
+          extended
+          color="primary"
+          (click)="filterSearch()"
+        >
+          Search <mat-icon>search</mat-icon>
+        </button>
+      </div>
+      <div class="clear-button">
+        <button mat-mini-fab color="warn" (click)="filterReset()">
+          <mat-icon>restore_from_trash</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <mat-paginator hidePageSize="true" (page)="pageEvent($event)"  [length]="info.count" [pageSizeOptions]="[20]" aria-label="Select page" [pageIndex]="pageNo">
+  </mat-paginator>
+  <div class="container-body">
+    <ng-container *ngIf="characters.length > 0">
+      <mat-card class="example-card" *ngFor="let character of characters">
+        <img
+          mat-card-image
+          [src]="character?.image || ''"
+          [alt]="character?.name || ''"
+        />
+        <mat-card-content class="card-content">
+          <p class="content-name">
+            <span class="content-span">{{ character?.name }}</span>
+          </p>
+          <p>
+            <span class="content-span">Status: </span>{{ character?.status }}
+          </p>
+          <p>
+            <span class="content-span">Species: </span>{{ character?.species }}
+          </p>
+          <p>
+            <span class="content-span">Gender: </span>{{ character?.gender }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions
+          ><button
+            mat-fab
+            aria-label="Example icon button with a vertical three dot icon"
+            extended
+            class="detail-button"
+            color="primary"
+            (click)="characterDetail(character.id)"
+          >
+            Details<mat-icon>arrow_forward</mat-icon>
+          </button></mat-card-actions
+        >
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
